@@ -15,6 +15,6 @@ function player(){
   // bruges til at indlæse playerens look
     this.render = function() {
 
-
+//test
     }
 }
