@@ -1,3 +1,5 @@
+let ship
+
 function setup() {
   createCanvas(windowWidth,windowHeight); 
 }
@@ -14,7 +16,8 @@ function player(){
     
   // bruges til at indlæse playerens look
     this.render = function() {
+      
+      triangle()
 
-//test
     }
 }
