@@ -1,6 +1,3 @@
-
-// Kommet til 13:46
-//vi er kommet til 16:23 men noget er gået i stykker
 //vi er kommet til 18:20
 
 let ship;
