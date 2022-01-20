@@ -53,7 +53,7 @@ function Ship() {
       this.boost();
     }
     this.pos.add(this.vel)
-    this.vel.mult(0.95)
+    this.vel.mult(0.99)
   }
   this.boost = function () {
     let force = p5.Vector.fromAngle(this.heading)
