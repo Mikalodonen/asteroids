@@ -42,6 +42,7 @@ function Ship() {
   this.vel = createVector(0, 0)
   this.isBoosting = false
 
+  //functionen for at vi kan bevæge os
   this.boosting = function (b) {
     this.isBoosting = b;
 
@@ -68,7 +69,7 @@ function Ship() {
     //figuren
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r)
   }
-
+//function der gør at vi kan køre ud til højre og kom ind fra venstre
   this.edges = function () {
     if (this.pos.x > width + this.r) {
       this.pos.x = -this.r;
