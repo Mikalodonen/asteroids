@@ -3,7 +3,7 @@ function Ship() {
   //Player starter i centrum
   this.pos = createVector(width / 2, height / 2)
   // Radius
-  this.r = 10
+  this.r = 15
   this.heading = 0
   this.rotation = 0
   this.vel = createVector(0, 0)

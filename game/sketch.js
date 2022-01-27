@@ -1,4 +1,4 @@
-//vi er kommet til 19:10
+//vi er kommet til part 2
 
 let ship;
 let asteroids = []
@@ -6,7 +6,9 @@ let asteroids = []
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship()
-  asteroids.push(new Asteroid())
+  for (let i = 0; i < 10; i++) {
+    asteroids.push(new Asteroid())
+  }
 }
 
 function draw() {
@@ -18,6 +20,8 @@ function draw() {
 
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].render()
+    asteroids[i].update()
+    asteroids[i].edges() 
   }
 }
 
