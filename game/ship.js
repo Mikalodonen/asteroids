@@ -27,7 +27,14 @@ function Ship() {
     force.mult(0.1)
     this.vel.add(force)
   }
-
+  this.hits = function (asteroid) {
+    let d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y)
+    if (d < this.r + asteroid.r) {
+      return true
+    } else {
+      return false
+    }
+  }
   // bruges til at indlæse playerens look
   this.render = function () {
     push()

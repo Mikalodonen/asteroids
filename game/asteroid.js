@@ -46,6 +46,7 @@ function Asteroid(pos, r) {
     let newA = []
     newA[0] = new Asteroid(this.pos, this.r)
     newA[1] = new Asteroid(this.pos, this.r)
+    newA[2] = new Asteroid(this.pos, this.r)
     return newA
   }
 
