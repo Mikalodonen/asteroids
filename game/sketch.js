@@ -2,6 +2,7 @@
 
 let ship;
 let asteroids = []
+let lazers = []
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,6 +24,20 @@ function draw() {
     asteroids[i].update()
     asteroids[i].edges() 
   }
+  for (let i = lazers.length-1; i >= 0; i--) {
+    lazers[i].render()
+    lazers[i].update()
+    for (let j = asteroids.length-1; j >= 0; j--) {
+    if (lazers[i].hits(asteroids[j])){
+      let newAsteroids = asteroids[j].breakup()
+      //console.log(newAsteroids)
+      asteroids = asteroids.concat(newAsteroids)
+      asteroids.splice(j, 1)
+      lazers.splice(i, 1)
+      break
+      }
+    }
+  }
 }
 
 function keyReleased() {
@@ -31,6 +46,10 @@ function keyReleased() {
 }
 
 function keyPressed() {
+  if (key == ' '){
+    lazers.push(new Lazer(ship.pos, ship.heading))
+  }
+
   if (keyCode == RIGHT_ARROW) {
     ship.setRotation(0.1)
   } else if (keyCode == LEFT_ARROW) {
