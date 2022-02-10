@@ -26,7 +26,8 @@ function Asteroid(pos, r) {
 
   this.render = function () {
     push()
-    // stroke()
+    stroke(185, 169, 201)
+    fill(139, 129, 150)
     translate(this.pos.x, this.pos.y)
     //ellipse(0, 0, this.r * 2)
     beginShape()
