@@ -1,5 +1,5 @@
 //vi er kommet til part 2
-
+let health
 let ship;
 let asteroids = []
 let lazers = []
@@ -7,6 +7,7 @@ let lazers = []
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship()
+  health = new Health()
   for (let i = 0; i < 10; i++) {
     asteroids.push(new Asteroid())
   }
@@ -18,10 +19,11 @@ function draw() {
   ship.turn()
   ship.update()
   ship.edges()
+  health.render()
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-
+      health.takeDamage()
     }
     asteroids[i].render()
     asteroids[i].update()
