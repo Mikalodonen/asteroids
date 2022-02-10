@@ -3,9 +3,14 @@ let health
 let ship;
 let asteroids = []
 let lazers = []
+let space
+
+function preload(){
+space = loadImage('space.png')
+}
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight );
   ship = new Ship()
   health = new Health()
   for (let i = 0; i < 10; i++) {
@@ -15,11 +20,14 @@ function setup() {
 
 function draw() {
   background("darkgrey");
+  image(space, 0, 0, windowWidth, windowHeight )
   ship.render();
   ship.turn()
   ship.update()
   ship.edges()
   health.render()
+
+  
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
