@@ -4,12 +4,17 @@ function Health() {
     this.maxHealth = 100
     this.deathHealth = 0
 
+    this.isGameOver = function(){
+        return this.health <=0
+    }
+
     this.takeDamage = function () {
         this.health = this.health - 0.5
         if (this.health < 0) {
             this.health = 0
         }
     }
+    
     this.render = function () {
         push()
         stroke(0)

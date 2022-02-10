@@ -27,7 +27,10 @@ function draw() {
   ship.edges()
   health.render()
 
-  
+  if(health.isGameOver()){
+    console.log("you dead!")
+    //show game over screen
+  }
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
