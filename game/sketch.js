@@ -19,8 +19,8 @@ function setup() {
 }
 
 function draw() {
-  background("darkgrey");
-  image(space, 0, 0, windowWidth, windowHeight )
+  background(space);
+  // image(space, 0, 0, windowWidth, windowHeight )
   ship.render();
   ship.turn()
   ship.update()
