@@ -43,7 +43,10 @@ function Ship() {
     rotate(this.heading + PI / 2)
     //figuren
     fill(118, 167, 227)
+    //noFill()
     stroke(181, 201, 232)
+    //strokeWeight(2)
+    //stroke(181, 201, 232)
     // Dette er til skip 2 der kommer til at være rød eller noget 
     // fill(183, 118, 227)
     // stroke(203, 181, 232)
