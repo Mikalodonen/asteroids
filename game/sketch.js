@@ -23,16 +23,19 @@ function setup() {
 function draw() {
   background(space);
   // image(space, 0, 0, windowWidth, windowHeight )
-  ship.render();
-  ship.turn()
-  ship.update()
-  ship.edges()
   health.render()
-
+  
   if(health.isGameOver()){
     console.log("you dead!")
     //show game over screen
     image(deathScreen, 0, 0, windowWidth, windowHeight)
+  } else{
+    // Har taget det her ned da skibet vil forsvinde når man dør 
+    ship.render();
+    ship.turn()
+    ship.update()
+    ship.edges()
+    
   }
 
   for (let i = 0; i < asteroids.length; i++) {
