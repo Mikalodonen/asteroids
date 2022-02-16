@@ -30,6 +30,7 @@ function draw() {
   if(health.isGameOver()){
     console.log("you dead!")
     //show game over screen
+    
   }
 
   for (let i = 0; i < asteroids.length; i++) {
