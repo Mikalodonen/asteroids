@@ -4,9 +4,11 @@ let ship;
 let asteroids = []
 let lazers = []
 let space
+let deathScreen
 
 function preload(){
 space = loadImage('space.png')
+deathScreen = loadImage('Death.png')
 }
 
 function setup() {
@@ -30,7 +32,7 @@ function draw() {
   if(health.isGameOver()){
     console.log("you dead!")
     //show game over screen
-    
+    image(deathScreen, 0, 0, windowWidth, windowHeight)
   }
 
   for (let i = 0; i < asteroids.length; i++) {
