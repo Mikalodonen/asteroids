@@ -17,13 +17,13 @@ function Health() {
     
     this.render = function () {
         push()
-        stroke(0)
+        stroke(83, 76, 99)
         strokeWeight(4)
         noFill()
-        rect(width / 2 - 100, 700, 200, 15)
+        rect(width / 2 - 100, 700, 200, 15,20)
         noStroke()
-        fill(255, 0, 0)
-        rect(width / 2 - 100, 700, map(this.health, 0, this.maxHealth, 0, 200), 15)
+        fill(255, 38, 53)
+        rect(width / 2 - 100, 700, map(this.health, 0, this.maxHealth, 0, 200), 15, 20)
         pop()
     }
 }
