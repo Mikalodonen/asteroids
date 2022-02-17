@@ -35,8 +35,29 @@ function draw() {
     ship.turn()
     ship.update()
     ship.edges()
+    //Her har jeg taget "lazerne" ind da man stadig kunne skyde når man har død
+    for (let i = lazers.length - 1; i >= 0; i--) {
+      lazers[i].render()
+      lazers[i].update()
+      if (lazers[i].offscreen()) {
+        lazers.splice(i, 1)
+      } else {
+        for (let j = asteroids.length - 1; j >= 0; j--) {
+          if (lazers[i].hits(asteroids[j])) {
+            if (asteroids[j].r > 10) {
+              let newAsteroids = asteroids[j].breakup()
+              //console.log(newAsteroids)
+              asteroids = asteroids.concat(newAsteroids)
+            }
+            asteroids.splice(j, 1)
+            lazers.splice(i, 1)
+            break
+          }
+        }
+      }
+    } //close for lazeren
     
-  }
+  } //close for health.isGameOver
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
@@ -45,26 +66,6 @@ function draw() {
     asteroids[i].render()
     asteroids[i].update()
     asteroids[i].edges()
-  }
-  for (let i = lazers.length - 1; i >= 0; i--) {
-    lazers[i].render()
-    lazers[i].update()
-    if (lazers[i].offscreen()) {
-      lazers.splice(i, 1)
-    } else {
-      for (let j = asteroids.length - 1; j >= 0; j--) {
-        if (lazers[i].hits(asteroids[j])) {
-          if (asteroids[j].r > 10) {
-            let newAsteroids = asteroids[j].breakup()
-            //console.log(newAsteroids)
-            asteroids = asteroids.concat(newAsteroids)
-          }
-          asteroids.splice(j, 1)
-          lazers.splice(i, 1)
-          break
-        }
-      }
-    }
   }
 
 }
