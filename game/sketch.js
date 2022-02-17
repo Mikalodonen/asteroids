@@ -30,11 +30,6 @@ function draw() {
     //show game over screen
     image(deathScreen, 0, 0, windowWidth, windowHeight)
   } else{
-    // Har taget det her ned da skibet vil forsvinde når man dør 
-    ship.render();
-    ship.turn()
-    ship.update()
-    ship.edges()
     //Her har jeg taget "lazerne" ind da man stadig kunne skyde når man har død
     for (let i = lazers.length - 1; i >= 0; i--) {
       lazers[i].render()
@@ -56,6 +51,11 @@ function draw() {
         }
       }
     } //close for lazeren
+    // Har taget det her ned da skibet vil forsvinde når man dør 
+    ship.render();
+    ship.turn()
+    ship.update()
+    ship.edges()
     
   } //close for health.isGameOver
 
