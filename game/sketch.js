@@ -5,38 +5,46 @@ let asteroids = []
 let lazers = []
 let space
 let deathScreen
+let DeathSound
 
-function preload(){
+function preload() {
   space = loadImage('space.png')
   deathScreen = loadImage('Death.png')
-  DeathSound = loadSound('Big_Explosion_Distant.mp3' )
-  Baggrundsmusik=loadSound('Icelandic_Arpeggios_-_DivKid.mp3', BaggrundsMusikken)
+  DeathSound = loadSound('Big_Explosion_Distant.mp3')
+  Baggrundsmusik = loadSound('Icelandic_Arpeggios_-_DivKid.mp3', BaggrundsMusikken)
+  DeathMusik = loadSound('Wolf_Mother_-_Loopop.mp3')
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight );
+  createCanvas(windowWidth, windowHeight);
   ship = new Ship()
   health = new Health()
   for (let i = 0; i < 10; i++) {
     asteroids.push(new Asteroid())
   }
+
 }
 
-function BaggrundsMusikken(){
-Baggrundsmusik.loop()
-Baggrundsmusik.setVolume(0.5)
+function BaggrundsMusikken() {
+  Baggrundsmusik.loop()
+  Baggrundsmusik.setVolume(0.5)
 }
+
+
 
 function draw() {
   background(space);
   // image(space, 0, 0, windowWidth, windowHeight )
   health.render()
-  
-  if(health.isGameOver()){
+  if (health.isGameOver()) {
+    Baggrundsmusik.stop()
+    DeathMusik.loop()
+    DeathSound.play()
     console.log("you dead!")
     //show game over screen
     image(deathScreen, 0, 0, windowWidth, windowHeight)
-  } else{
+    noLoop()
+  } else {
     //Her har jeg taget "lazerne" ind da man stadig kunne skyde når man har død
     for (let i = lazers.length - 1; i >= 0; i--) {
       lazers[i].render()
@@ -65,7 +73,7 @@ function draw() {
     ship.edges()
     
   } //close for health.isGameOver
-
+  
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
       health.takeDamage()
@@ -74,7 +82,6 @@ function draw() {
     asteroids[i].update()
     asteroids[i].edges()
   }
-
 }
 
 function keyReleased() {
@@ -85,6 +92,7 @@ function keyReleased() {
 function keyPressed() {
   if (key == ' ') {
     lazers.push(new Lazer(ship.pos, ship.heading))
+    //imputsound.play()
   }
 
   if (keyCode == RIGHT_ARROW) {
