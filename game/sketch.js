@@ -7,8 +7,10 @@ let space
 let deathScreen
 
 function preload(){
-space = loadImage('space.png')
-deathScreen = loadImage('Death.png')
+  space = loadImage('space.png')
+  deathScreen = loadImage('Death.png')
+  DeathSound = loadSound('Big_Explosion_Distant.mp3' )
+  Baggrundsmusik=loadSound('Icelandic_Arpeggios_-_DivKid.mp3', BaggrundsMusikken)
 }
 
 function setup() {
@@ -18,6 +20,11 @@ function setup() {
   for (let i = 0; i < 10; i++) {
     asteroids.push(new Asteroid())
   }
+}
+
+function BaggrundsMusikken(){
+Baggrundsmusik.loop()
+Baggrundsmusik.setVolume(0.5)
 }
 
 function draw() {
