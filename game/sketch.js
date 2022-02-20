@@ -10,9 +10,12 @@ let DeathSound
 function preload() {
   space = loadImage('space.png')
   deathScreen = loadImage('Death.png')
-  DeathSound = loadSound('Big_Explosion_Distant.mp3')
+  DeathSound1 = loadSound('zapsplat_science_fiction_impact_explosion_spacecraft_blow_up_my_missile_006_63120.mp3')
+  DeathSound2 = loadSound('zapsplat_science_fiction_explosion_whisling_debris_66998.mp3')
   Baggrundsmusik = loadSound('Icelandic_Arpeggios_-_DivKid.mp3', BaggrundsMusikken)
   DeathMusik = loadSound('Wolf_Mother_-_Loopop.mp3')
+  LazerSound = loadSound('zapsplat_science_fiction_laser_hit_thud_zap_delay_002_65400.mp3')
+  StoneSound = loadSound('stone_rock.mp3')
 }
 
 function setup() {
@@ -39,7 +42,11 @@ function draw() {
   if (health.isGameOver()) {
     Baggrundsmusik.stop()
     DeathMusik.loop()
-    DeathSound.play()
+    //DeathMusik.setVolume(0,5)
+    DeathSound1.play()
+    DeathSound1.setVolume(0.09)
+    DeathSound2.play()
+    DeathSound2.setVolume(0.09)
     console.log("you dead!")
     //show game over screen
     image(deathScreen, 0, 0, windowWidth, windowHeight)
@@ -54,6 +61,8 @@ function draw() {
       } else {
         for (let j = asteroids.length - 1; j >= 0; j--) {
           if (lazers[i].hits(asteroids[j])) {
+            StoneSound.play()
+            StoneSound.setVolume(0.2)
             if (asteroids[j].r > 10) {
               let newAsteroids = asteroids[j].breakup()
               //console.log(newAsteroids)
@@ -92,7 +101,8 @@ function keyReleased() {
 function keyPressed() {
   if (key == ' ') {
     lazers.push(new Lazer(ship.pos, ship.heading))
-    //imputsound.play()
+    LazerSound.play()
+    LazerSound.setVolume(0.15)
   }
 
   if (keyCode == RIGHT_ARROW) {
