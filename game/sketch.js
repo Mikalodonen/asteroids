@@ -80,9 +80,9 @@ function draw() {
     ship.turn()
     ship.update()
     ship.edges()
-    
+
   } //close for health.isGameOver
-  
+
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
       health.takeDamage()
