@@ -42,7 +42,7 @@ function draw() {
   if (health.isGameOver()) {
     Baggrundsmusik.stop()
     DeathMusik.loop()
-    //DeathMusik.setVolume(0,5)
+    DeathMusik.setVolume(0.5)
     DeathSound1.play()
     DeathSound1.setVolume(0.09)
     DeathSound2.play()
